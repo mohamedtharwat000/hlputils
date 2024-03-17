@@ -1,0 +1,14 @@
+{
+  "name": "hlputils",
+  "version": "1.0.0",
+  "description": "helper utilities",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Mohamed Tharwat",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1"
+  }
+}

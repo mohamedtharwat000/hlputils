@@ -1,6 +1,6 @@
 {
   "name": "hlputils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "helper utilities",
   "main": "index.js",
   "scripts": {},

@@ -1,0 +1,39 @@
+name: Release Package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run all scripts
+        run: |
+          npm run all
+          SCRIPT_EXIT_CODE=$?
+          if [ $SCRIPT_EXIT_CODE -ne 0 ]; then
+            echo "Error: Scripts failed to run. Aborting release process."
+            exit $SCRIPT_EXIT_CODE
+          fi
+
+      - name: Bump version and publish
+        run: |
+          VERSION=$(npm version patch)
+          echo "New version: $VERSION"
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

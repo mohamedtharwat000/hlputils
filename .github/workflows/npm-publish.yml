@@ -35,10 +35,10 @@ jobs:
             exit $SCRIPT_EXIT_CODE
           fi
 
+      - name: Log in to npm with token
+        run: npm config set '//registry.npmjs.org/:_authToken' ${{ secrets.NPM_TOKEN }}
+
       - name: Bump version and publish
         run: |
           VERSION=$(npm version patch)
-          echo "New version: $VERSION"
           npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

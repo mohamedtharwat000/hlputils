@@ -8,6 +8,6 @@
 function log(value, logType = 'log') {
     // eslint-disable-next-line no-console
     console[logType](value);
-    return JSON.stringify(value).length;
+    return value.toString().length;
 }
 export default log;

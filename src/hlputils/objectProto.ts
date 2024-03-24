@@ -1,30 +1,19 @@
-const type = require('./type');
+import type from './type.js';
 
 /**
  * Enhances the `Object.prototype` by adding methods from the global `Object`.
  * These methods can be called on any object.
- *
- * @function
- * @name objectProto
- * @returns {undefined} Returns `undefined`.
- *
- * @example
- * const myObject = { a: 1, b: 2 };
- *
- * // Now you can use methods like `myObject.hasOwnProperty()`
- * myObject.hasOwnProperty('a'); // true
- * myObject.hasOwnProperty('c'); // false
  */
-function objectProto() {
+function objectProto(): void {
   Object.getOwnPropertyNames(Object)
-    .filter((property) => type(Object[property]) === 'function')
-    .forEach((property) => {
+    .filter((property: string) => type(Object[property]) === 'function')
+    .forEach((property: string) => {
       // eslint-disable-next-line no-extend-native
       Object.defineProperty(Object.prototype, property, {
         configurable: false,
         enumerable: false,
         writable: false,
-        value(...args) {
+        value(this: unknown, ...args: unknown[]) {
           return type(this) === 'object'
             ? Object[property](this, ...args)
             : undefined;
@@ -33,4 +22,4 @@ function objectProto() {
     });
 }
 
-module.exports = objectProto;
+export default objectProto;

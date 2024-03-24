@@ -40,5 +40,5 @@ jobs:
 
       - name: Bump version and publish
         run: |
-          VERSION=$(npm version patch)
+          npm version patch
           npm publish

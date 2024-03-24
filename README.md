@@ -16,11 +16,12 @@ npm install hlputils
 
 ## Usage
 
-Import the the package:
+Import the functions from the package:
 
 ```javascript
-import 'hlputils';
+import {log, type, ...} from 'hlputils';
 ```
+here are a small examples of using it
 
 ### Logging
 
@@ -39,36 +40,19 @@ The type function can be used to check the type of a variable. It returns a stri
 
 ```javascript
 const myVar = 10;
-console.log(type(myVar)); // Output: "number"
+type(myVar); // Output: "number"
 
 const myObject = {};
-console.log(type(myObject)); // Output: "object"
+type(myObject); // Output: "object"
 
 const myArray = [1, 2, 3];
-console.log(type(myArray)); // Output: "array"
+type(myArray); // Output: "array"
 
 const myNull = null;
-console.log(type(myNull)); // Output: "null"
+type(myNull); // Output: "null"
 
 const myUndefined = undefined;
-console.log(type(myUndefined)); // Output: "undefined"
-```
-
-### Enhanced Object Prototype
-
-```javascript
-const myObject = { a: 1, b: 2 };
-
-// Check if the object has a property
-console.log(myObject.hasOwnProperty('a')); // Output: true
-
-// Get all property keys
-console.log(myObject.keys()); // Output: ["a", "b"]
-
-// Get all property values
-console.log(myObject.values()); // Output: [1, 2]
-
-all Object methods...
+type(myUndefined); // Output: "undefined"
 ```
 
 ## Future Features

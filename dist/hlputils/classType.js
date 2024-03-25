@@ -5,7 +5,7 @@ import type from './type.js'; // Assuming 'type' module exports a 'Type' functio
  * @param value - The value to check.
  * @returns {string} The class type of the value (lowercase).
  */
-function classType(value) {
+export function classType(value) {
     return type(value) === 'object' && value?.constructor
         ? value.constructor.name.toLowerCase()
         : type(value);

@@ -5,7 +5,7 @@
  * @param logType - The type of log (e.g., 'log', 'error', 'warn').
  * @returns The length of the printed string.
  */
-function log(
+export function log(
   value: unknown,
   logType: 'log' | 'error' | 'warn' = 'log',
 ): number {

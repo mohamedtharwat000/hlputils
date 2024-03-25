@@ -8,6 +8,7 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
 
     steps:
       - name: Checkout code
@@ -23,17 +24,17 @@ jobs:
         run: |
           npm run all
 
-      - name: Bump version and commit changes (with force)
+      - name: Bump version and publish
         run: |
           git config --global user.email "mohamed.sarwat.000@gmail.com"
           git config --global user.name "mohamedtharwat000"
           if [ -z "$(git status --porcelain)" ]; then
-            echo "Working directory clean. Nothing to commit."
           else
             git add .
             git commit -m "Bump version"
           fi
           npm version patch --force -m "Bump version to %s"
+          git push
 
       - name: Publish to npm registry
         run: |

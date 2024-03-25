@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Log to the console.
  *
@@ -5,9 +7,9 @@
  * @param logType - The type of log (e.g., 'log', 'error', 'warn').
  * @returns The length of the printed string.
  */
-export function log(value, logType = 'log') {
+function log(value, logType = 'log') {
     // eslint-disable-next-line no-console
     console[logType](value);
     return value.toString().length;
 }
-export default log;
+exports.default = log;

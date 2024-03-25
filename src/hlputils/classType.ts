@@ -1,4 +1,4 @@
-import type from './type.js';
+import type from './type';
 
 /**
  * Returns the class type of an object.
@@ -6,7 +6,7 @@ import type from './type.js';
  * @param value - The value to check.
  * @returns {string} The class type of the value (lowercase).
  */
-export function classType(value: unknown): string {
+function classType(value: unknown): string {
   return type(value) === 'object' && value?.constructor
     ? value.constructor.name.toLowerCase()
     : type(value);

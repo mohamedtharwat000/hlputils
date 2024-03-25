@@ -4,5 +4,5 @@
  * @param value - The value to check.
  * @returns The type of the value (e.g., 'number', 'object', etc.).
  */
-export declare function type(value: unknown): string;
+declare function type(value: unknown): string;
 export default type;

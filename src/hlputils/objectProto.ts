@@ -1,10 +1,10 @@
-import type from './type.js';
+import type from './type';
 
 /**
  * Enhances the `Object.prototype` by adding methods from the global `Object`.
  * These methods can be called on any object.
  */
-export function objectProto(): void {
+function objectProto(): void {
   Object.getOwnPropertyNames(Object)
     .filter((property: string) => type(Object[property]) === 'function')
     .forEach((property: string) => {

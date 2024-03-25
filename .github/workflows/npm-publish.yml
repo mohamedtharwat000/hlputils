@@ -25,11 +25,9 @@ jobs:
 
       - name: Bump version and commit changes
         run: |
-          git add .
-          npm version patch -m "Bump version to %s"
+          npm version patch -m "Bump version to %s" --force
           git config --global user.email "mohamed.sarwat.000@gmail.com"
           git config --global user.name "mohamedtharwat000"
-          git commit -m "Bump version to %s"
 
       - name: Publish to npm registry
         run: |

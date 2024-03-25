@@ -15,25 +15,20 @@ jobs:
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
-        with:
-          node-version: '18'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Configure Git user identity
-        run: |
-          git config --global user.email "mohamed.sarwat.000@gmail.com"
-          git config --global user.name "mohamedtharwat000"
-
       - name: Run all scripts
         run: |
           npm run all
-          SCRIPT_EXIT_CODE=$?
-          if [ $SCRIPT_EXIT_CODE -ne 0 ]; then
-            echo "Error: Scripts failed to run. Aborting release process."
-            exit $SCRIPT_EXIT_CODE
-          fi
+
+      - name: Configure Git
+        run: |
+          git config --global user.email "mohamed.sarwat.000@gmail.com"
+          git config --global user.name "mohamedtharwat000"
+          npm version patch -m "Bump version to %s"
+          git push -a
 
       - name: Log in to npm with token
         run: npm config set '//registry.npmjs.org/:_authToken' ${{ secrets.NPM_TOKEN }}

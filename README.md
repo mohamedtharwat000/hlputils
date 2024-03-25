@@ -19,8 +19,11 @@ npm install hlputils
 Import the functions from the package:
 
 ```javascript
-import {log, type, ...} from 'hlputils';
+import hlputils from 'hlputils'
+or
+import { log, type, classType, objectProto, ... } from 'hlputils';
 ```
+
 here are a small examples of using it
 
 ### Logging
@@ -55,6 +58,31 @@ const myUndefined = undefined;
 type(myUndefined); // Output: "undefined"
 ```
 
+### Class Type
+
+The `classType` function is used to determine the class type of an object.
+
+```javascript
+class Car {}
+const myCar = new Car();
+classType(myCar); // Output: "car"
+```
+
+### Object Prototype
+
+The `objectProto` function extends the `Object.prototype` with enumerable properties from the `Object` class.
+
+```javascript
+objectProto();
+
+const obj = { name: 'John' };
+const obj2 = {};
+
+console.log(obj.is(obj2)); // Output: false
+console.log(obj.hasOwnProperty('name')); // Output: true
+console.log(obj.keys()); // Returns: ['name']
+```
+
 ## Future Features
 
 - **More utility functions**: The package will be expanded to include more helper functions for tasks like string manipulation, array manipulation, and working with dates and times.
@@ -87,3 +115,7 @@ This project is open source and available under the [MIT License](LICENSE).
 ## Credits
 
 Created by [Mohamed Tharwat](https://github.com/mohamedtharwat000). Feel free to reach out with any questions or feedback.
+
+```
+
+```

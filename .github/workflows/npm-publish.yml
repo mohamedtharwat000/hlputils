@@ -23,21 +23,16 @@ jobs:
         run: |
           npm run all
 
-      - name: Check if commit message contains version bump
-        id: version-check
-        run: |
-          if grep -qE '^Bump version to [0-9]+\.[0-9]+\.[0-9]+' $GITHUB_EVENT_PATH; then
-            echo "should_run=true" >> $GITHUB_ENV
-          else
-            echo "should_run=false" >> $GITHUB_ENV
-          fi
-
-      - name: Bump version and publish
-        if: steps.version-check.outputs.should_run == 'true'
+      - name: Bump version
         run: |
           npm version patch -m "Bump version to %s"
+          npm config set '//registry.npmjs.org/:_authToken' ${{ secrets.NPM_TOKEN }}
+
+      - name: set up git
+        run: |
           git config --global user.email "mohamed.sarwat.000@gmail.com"
           git config --global user.name "mohamedtharwat000"
           git commit -am "Bump version" --no-edit
-          npm config set '//registry.npmjs.org/:_authToken' ${{ secrets.NPM_TOKEN }}
-          npm publish
+
+      - name: publish
+        run: npm publish

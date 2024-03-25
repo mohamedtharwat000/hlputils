@@ -58,7 +58,6 @@ type(myUndefined); // Output: "undefined"
 ## Future Features
 
 - **More utility functions**: The package will be expanded to include more helper functions for tasks like string manipulation, array manipulation, and working with dates and times.
-- **TypeScript support**: TypeScript definitions will be added to provide type safety and improved developer experience.
 
 ## Contributing
 

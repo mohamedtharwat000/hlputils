@@ -23,9 +23,16 @@ jobs:
         run: |
           npm run all
 
-      - name: Log in to npm with token
-        run: npm config set '//registry.npmjs.org/:_authToken' ${{ secrets.NPM_TOKEN }}
+      - name: Check if commit message contains version bump
+        id: version-check
+        run: echo "::set-output name=should_run::$(if grep -qE '^Bump version to [0-9]+\.[0-9]+\.[0-9]+' $GITHUB_EVENT_PATH; then echo true; else echo false; fi)"
 
       - name: Bump version and publish
+        if: steps.version-check.outputs.should_run == 'true'
         run: |
+          npm version patch -m "Bump version to %s"
+          git config --global user.email "mohamed.sarwat.000@gmail.com"
+          git config --global user.name "mohamedtharwat000"
+          git commit -am "Bump version" --no-edit
+          npm config set '//registry.npmjs.org/:_authToken' ${{ secrets.NPM_TOKEN }}
           npm publish

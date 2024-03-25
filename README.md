@@ -81,6 +81,7 @@ const obj2 = {};
 console.log(obj.is(obj2)); // Output: false
 console.log(obj.hasOwnProperty('name')); // Output: true
 console.log(obj.keys()); // Returns: ['name']
+... // all Object methods
 ```
 
 ## Future Features
@@ -115,7 +116,3 @@ This project is open source and available under the [MIT License](LICENSE).
 ## Credits
 
 Created by [Mohamed Tharwat](https://github.com/mohamedtharwat000). Feel free to reach out with any questions or feedback.
-
-```
-
-```

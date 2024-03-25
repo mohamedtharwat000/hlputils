@@ -1,4 +1,4 @@
-import type from './type.js'; // Assuming 'type' module exports a 'Type' function
+import type from './type.js';
 
 /**
  * Returns the class type of an object.

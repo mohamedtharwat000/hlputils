@@ -27,11 +27,8 @@ jobs:
         run: |
           git config --global user.email "mohamed.sarwat.000@gmail.com"
           git config --global user.name "mohamedtharwat000"
-          # Try to stash any untracked changes (optional)
-          git stash push -q
-          npm version patch -m "Bump version to %s" --force
-          git stash pop -q
-          git add package.json
+          npm version patch
+          git add .
           git commit -m "Bump version to %s"
 
       - name: Publish to npm registry

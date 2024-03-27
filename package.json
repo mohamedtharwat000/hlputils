@@ -9,10 +9,10 @@
     "format": "prettier --write src",
     "lint": "eslint --fix src",
     "build": "tsc",
-    "all": "npm-run-all lint format build",
+    "all": "npm-run-all format lint build",
     "format:watch": "onchange -k src -- npm run format ",
     "lint:watch": "onchange -k src -- npm run lint ",
-    "build:watch": "tsc -w",
+    "build:watch": "onchange -k src -- npm run build",
     "all:watch": "onchange -k src -- npm-run-all format lint build"
   },
   "devDependencies": {

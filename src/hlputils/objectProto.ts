@@ -12,7 +12,7 @@ function objectProto(): void {
       Object.defineProperty(Object.prototype, property, {
         configurable: false,
         enumerable: false,
-        writable: false,
+        writable: true,
         value(this: unknown, ...args: unknown[]) {
           return type(this) === 'object'
             ? Object[property](this, ...args)

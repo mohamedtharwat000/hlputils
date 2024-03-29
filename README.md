@@ -1,6 +1,8 @@
-# Project Title
 
-hlputils
+# hlputils
+
+[hlputils package on npmjs.com](https://www.npmjs.com/package/hlputils)
+
 
 ## Description
 

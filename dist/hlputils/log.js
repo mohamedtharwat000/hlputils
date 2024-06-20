@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Log to the console.
  *
@@ -8,8 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @returns The length of the printed string.
  */
 function log(value, logType = 'log') {
-    // eslint-disable-next-line no-console
     console[logType](value);
-    return value.toString().length;
+    return String(value).length;
 }
-exports.default = log;
+export default log;
+//# sourceMappingURL=log.js.map

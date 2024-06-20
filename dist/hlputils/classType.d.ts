@@ -6,3 +6,4 @@
  */
 declare function classType(value: unknown): string;
 export default classType;
+//# sourceMappingURL=classType.d.ts.map

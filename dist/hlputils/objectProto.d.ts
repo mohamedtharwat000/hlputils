@@ -4,3 +4,4 @@
  */
 declare function objectProto(): void;
 export default objectProto;
+//# sourceMappingURL=objectProto.d.ts.map

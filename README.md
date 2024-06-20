@@ -1,8 +1,6 @@
-
 # hlputils
 
 [hlputils package on npmjs.com](https://www.npmjs.com/package/hlputils)
-
 
 ## Description
 
@@ -21,69 +19,72 @@ npm install hlputils
 Import the functions from the package:
 
 ```javascript
-import hlputils from 'hlputils'
-or
-import { log, type, classType, objectProto, ... } from 'hlputils';
+import { log, type, classType, objectProto, asyncjson } from 'hlputils';
 ```
-
-here are a small examples of using it
 
 ### Logging
 
-Use the log function to log messages. The function takes two parameters: the message and the type of the message. The type can be ‘error’, ‘warn’, or ‘info’. If no type is provided, it defaults to a general log message.
+Use the `log` function to log messages and return it's length. The function takes two parameters: the message and the type of the message. The type can be ‘log’, ‘error’, ‘warn’, or ‘table’. If no type is provided, it defaults to a general log message.
 
 ```javascript
-log('This is a log message'); // Output: "LOG: This is a log message"
-log('This is an error message', 'error'); // Output: "ERROR: This is an error message"
-log('This is a warning message', 'warn'); // Output: "WARN: This is a warning message"
-log('This is an info message', 'info'); // Output: "INFO: This is an info message"
+log('This is a log message'); // Output: This is a log message
+log('This is an error message', 'error'); // Output: This is an error message
 ```
 
 ### Type Checking
 
-The type function can be used to check the type of a variable. It returns a string that represents the type of the variable.
+The `type` function returns the type of the passed value as a string.
 
 ```javascript
-const myVar = 10;
-type(myVar); // Output: "number"
-
-const myObject = {};
-type(myObject); // Output: "object"
-
-const myArray = [1, 2, 3];
-type(myArray); // Output: "array"
-
-const myNull = null;
-type(myNull); // Output: "null"
-
-const myUndefined = undefined;
-type(myUndefined); // Output: "undefined"
+console.log(type([])); // Output: "array"
+console.log(type({})); // Output: "object"
+console.log(type(null)); // Output: "null"
 ```
 
 ### Class Type
 
-The `classType` function is used to determine the class type of an object.
+The `classType` function returns the class type of an object.
 
 ```javascript
-class Car {}
-const myCar = new Car();
-classType(myCar); // Output: "car"
+console.log(classType(new Date())); // Output: "Date"
 ```
 
-### Object Prototype
+### Object Prototype Enhancement
 
-The `objectProto` function extends the `Object.prototype` with enumerable properties from the `Object` class.
+The `objectProto` function enhances the `Object.prototype` by adding methods from the global `Object`. These methods can be called on any object.
 
 ```javascript
 objectProto();
 
-const obj = { name: 'John' };
-const obj2 = {};
+const obj = { name: 'John', age: 30 };
+const obj2 = { name: 'Jane', age: 25 };
 
 console.log(obj.is(obj2)); // Output: false
 console.log(obj.hasOwnProperty('name')); // Output: true
-console.log(obj.keys()); // Returns: ['name']
-... // all Object methods
+console.log(Object.keys(obj)); // Output: ['name', 'age']
+```
+
+### Async JSON Operations
+
+The `asyncjson` function is an asynchronous operation that allows you to convert objects to JSON strings and vice versa without blocking the code execution. It provides two methods: `fromJS` and `toJS`.
+
+The `fromJS` method takes an object as input and returns a promise that resolves to the corresponding JSON string. Here's an example usage:
+
+```javascript
+asyncjson.fromJS({ hello: 'world' }).then(console.log); // Output: '{"hello":"world"}'
+```
+
+The `toJS` method takes a JSON string as input and returns a promise that resolves to the corresponding JavaScript object. Here's an example usage:
+
+```javascript
+asyncjson.toJS('{"hello":"world"}').then(console.log); // Output: { hello: 'world' }
+```
+
+These methods allow you to perform JSON operations asynchronously, ensuring that your code continues to execute without being blocked.
+
+```javascript
+asyncjson.fromJS({ hello: 'world' }).then(console.log); // Output: '{"hello":"world"}'
+asyncjson.toJS('{"hello":"world"}').then(console.log); // Output: { hello: 'world' }
 ```
 
 ## Future Features

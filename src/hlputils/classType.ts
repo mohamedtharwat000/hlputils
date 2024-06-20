@@ -1,4 +1,4 @@
-import type from './type';
+import type from './type.js';
 
 /**
  * Returns the class type of an object.
@@ -8,7 +8,7 @@ import type from './type';
  */
 function classType(value: unknown): string {
   return type(value) === 'object' && value?.constructor
-    ? value.constructor.name.toLowerCase()
+    ? value.constructor.name
     : type(value);
 }
 

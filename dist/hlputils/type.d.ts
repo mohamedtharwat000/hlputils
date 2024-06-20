@@ -6,3 +6,4 @@
  */
 declare function type(value: unknown): string;
 export default type;
+//# sourceMappingURL=type.d.ts.map

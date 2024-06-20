@@ -1,28 +1,20 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const type_1 = __importDefault(require("./type"));
+import type from './type.js';
 /**
  * Enhances the `Object.prototype` by adding methods from the global `Object`.
  * These methods can be called on any object.
  */
 function objectProto() {
-    Object.getOwnPropertyNames(Object)
-        .filter((property) => (0, type_1.default)(Object[property]) === 'function')
-        .forEach((property) => {
-        // eslint-disable-next-line no-extend-native
-        Object.defineProperty(Object.prototype, property, {
-            configurable: false,
-            enumerable: false,
-            writable: true,
-            value(...args) {
-                return (0, type_1.default)(this) === 'object'
-                    ? Object[property](this, ...args)
-                    : undefined;
-            },
-        });
-    });
+    const OPM = Object.getOwnPropertyDescriptors(Object);
+    for (const fn in OPM) {
+        if (type(OPM[fn]) === 'function') {
+            Object.defineProperty(Object.prototype, fn, {
+                ...OPM[fn],
+                value(...args) {
+                    return type(this) === 'object' && OPM[fn].value(this, ...args);
+                },
+            });
+        }
+    }
 }
-exports.default = objectProto;
+export default objectProto;
+//# sourceMappingURL=objectProto.js.map

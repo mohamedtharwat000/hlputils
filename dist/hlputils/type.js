@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Returns the type of a value.
  *
@@ -9,4 +7,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 function type(value) {
     return Object.prototype.toString.call(value).slice(8, -1).toLowerCase();
 }
-exports.default = type;
+export default type;
+//# sourceMappingURL=type.js.map

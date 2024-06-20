@@ -1,7 +1,7 @@
-import log from './hlputils/log';
-import type from './hlputils/type';
-import classType from './hlputils/classType';
-import objectProto from './hlputils/objectProto';
+import log from './hlputils/log.js';
+import type from './hlputils/type.js';
+import classType from './hlputils/classType.js';
+import objectProto from './hlputils/objectProto.js';
+import asyncjson from './hlputils/json.js';
 
-export { log, type, classType, objectProto };
-export default { log, type, classType, objectProto };
+export { log, type, classType, objectProto, asyncjson };

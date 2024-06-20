@@ -1,12 +1,7 @@
-import log from './hlputils/log';
-import type from './hlputils/type';
-import classType from './hlputils/classType';
-import objectProto from './hlputils/objectProto';
-export { log, type, classType, objectProto };
-declare const _default: {
-    log: typeof log;
-    type: typeof type;
-    classType: typeof classType;
-    objectProto: typeof objectProto;
-};
-export default _default;
+import log from './hlputils/log.js';
+import type from './hlputils/type.js';
+import classType from './hlputils/classType.js';
+import objectProto from './hlputils/objectProto.js';
+import asyncjson from './hlputils/json.js';
+export { log, type, classType, objectProto, asyncjson };
+//# sourceMappingURL=index.d.ts.map

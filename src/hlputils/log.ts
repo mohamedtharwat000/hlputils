@@ -7,11 +7,10 @@
  */
 function log(
   value: unknown,
-  logType: 'log' | 'error' | 'warn' = 'log',
+  logType: 'log' | 'error' | 'warn' | 'table' = 'log'
 ): number {
-  // eslint-disable-next-line no-console
   console[logType](value);
-  return value.toString().length;
+  return String(value).length;
 }
 
 export default log;

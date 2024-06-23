@@ -36,9 +36,9 @@ log('This is an error message', 'error'); // Output: This is an error message
 The `type` function returns the type of the passed value as a string.
 
 ```javascript
-console.log(type([])); // Output: "array"
-console.log(type({})); // Output: "object"
-console.log(type(null)); // Output: "null"
+type([]); // Output: "array"
+type(null); // Output: "null"
+type(class c {}); // Output: "class"
 ```
 
 ### Class Type
@@ -46,12 +46,12 @@ console.log(type(null)); // Output: "null"
 The `classType` function returns the class type of an object.
 
 ```javascript
-console.log(classType(new Date())); // Output: "Date"
+classType(new Date()); // Output: "Date"
 ```
 
 ### Object Prototype Enhancement
 
-The `objectProto` function enhances the `Object.prototype` by adding methods from the global `Object`. These methods can be called on any object.
+The `objectProto` function enhances the `Object.prototype` by adding static methods from the global `Object`.
 
 ```javascript
 objectProto();
@@ -59,9 +59,10 @@ objectProto();
 const obj = { name: 'John', age: 30 };
 const obj2 = { name: 'Jane', age: 25 };
 
-console.log(obj.is(obj2)); // Output: false
-console.log(obj.hasOwnProperty('name')); // Output: true
-console.log(Object.keys(obj)); // Output: ['name', 'age']
+obj.is(obj2); // Output: false
+obj.hasOwnProperty('name'); // Output: true
+Object.keys(obj); // Output: ['name', 'age']
+// .etc for all Object static methods
 ```
 
 ### Async JSON Operations
@@ -71,20 +72,13 @@ The `asyncjson` function is an asynchronous operation that allows you to convert
 The `fromJS` method takes an object as input and returns a promise that resolves to the corresponding JSON string. Here's an example usage:
 
 ```javascript
-asyncjson.fromJS({ hello: 'world' }).then(console.log); // Output: '{"hello":"world"}'
+asyncjson.fromJS({ hello: 'world' }); // Output: '{"hello":"world"}'
 ```
 
 The `toJS` method takes a JSON string as input and returns a promise that resolves to the corresponding JavaScript object. Here's an example usage:
 
 ```javascript
-asyncjson.toJS('{"hello":"world"}').then(console.log); // Output: { hello: 'world' }
-```
-
-These methods allow you to perform JSON operations asynchronously, ensuring that your code continues to execute without being blocked.
-
-```javascript
-asyncjson.fromJS({ hello: 'world' }).then(console.log); // Output: '{"hello":"world"}'
-asyncjson.toJS('{"hello":"world"}').then(console.log); // Output: { hello: 'world' }
+asyncjson.toJS('{"hello":"world"}'); // Output: { hello: 'world' }
 ```
 
 ## Future Features
